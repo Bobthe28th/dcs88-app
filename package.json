@@ -1,0 +1,54 @@
+{
+  "name": "dcs88app",
+  "version": "0.1.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon --watch . --exec electron .",
+    "build": "electron-builder",
+    "make": "electron-builder --win"
+  },
+  "devDependencies": {
+    "@electron/fuses": "^1.8.0",
+    "@electron/remote": "^2.1.2",
+    "electron": "33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "keywords": [],
+  "author": "Bobthe28th",
+  "license": "ISC",
+  "description": "DCS 88 App",
+  "dependencies": {
+    "discord-rpc": "^4.0.1",
+    "electron-updater": "^6.3.9",
+    "net": "^1.0.2"
+  },
+  "build": {
+    "appId": "me.bobthe28th.dcs88",
+    "productName": "DCS 88",
+    "files": [
+      "**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "./assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "DCS 88",
+      "createDesktopShortcut": false,
+      "createStartMenuShortcut": true
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Bobthe28th",
+        "repo": "dcs88app"
+      }
+    ]
+  }
+}

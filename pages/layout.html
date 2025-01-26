@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DCS 88 v0.1</title>
+        <script defer src="../scripts/page.js"></script>
+        <link rel="stylesheet" href="../css/styles.css"/>
+        <link id="extracss" rel="stylesheet" href=""/>
+        <script defer id="extrajs" src=""></script>
+    </head>
+    <body>
+        <header id="titlebar">
+            <div id="drag-region">
+                <div id="title">DCS 88 v0.1</div>
+                <div id="dcsconnect">
+                    <div id="gameconnect" class="dropdownbutton">
+                        <img class="icon" src="../assets/plane.png" draggable="false" />
+                        <div class="dropdown">
+                            <a class="retry">Retry</a>
+                            <a class="timeout">5.0s</a>
+                        </div>
+                    </div>
+                    <div id="serverconnect" class="dropdownbutton">
+                        <img class="icon" src="../assets/web.png" draggable="false" />
+                        <div class="dropdown">
+                            <a class="retry">Retry</a>
+                            <a class="timeout">5.0s</a>
+                            <input class="username" type="text" placeholder="Username">
+                            <a class="loginprofile" onclick="loadPage('profile')">Login</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="window-controls">
+                    <div class="button" id="minimize">
+                        <img class="icon" src="../assets/min-k-30.png" draggable="false" />
+                    </div>
+                    
+                    <div class="button" id="maximize">
+                        <img class="icon" src="../assets/max-k-30.png" draggable="false" />
+                    </div>
+                    
+                    <div class="button hide" id="restore">
+                        <img class="icon" src="../assets/restore-k-30.png" draggable="false" />
+                    </div>
+                    
+                    <div class="button" id="close">
+                        <img class="icon" src="../assets/close-k-30.png" draggable="false" />
+                    </div>
+                </div>
+            </div>
+            <div id="header">
+                <div id="back" onclick="loadPage('home')">Home</div>
+                <div id="money">Money: $<span id="moneyvalue">?</span></div>
+                <div id="viewstats">View Stats</div>
+                <div id="info">Info</div>
+            </div>
+        </header>
+        
+        
+        <main>
+            <div id="page">
+            </div>
+        </main>
+        <div id="infodata">
+            <div id="news">
+                <div><h2><i>SALE SALE SALE</i></h2><p>Mk-82s 50% off!</p></div>
+                <div><h2>Test News</h2><p>This is a test for some data :)</p></div>
+                <div><h2>Airbase Unlocked</h2><p>Friendly forces have moved into Wujah</p></div>
+                <div><h2>Test News</h2><p>This is a test for some data :)</p></div>
+                <div><h2>Test News</h2><p>This is a test for some data :)</p></div>
+            </div>
+            <div id="leaderboard">
+                <div id="leaderboardheader">
+                    <h3>Leaderboard</h3>
+                    <p>Sort by:<div id="leaderboardsort">Money</div></p>
+                </div>
+                <div id="leaderboarddata">
+                    <ol>
+                        <li>Goober</li>
+                        <li>Doober</li>
+                        <li>Loober</li>
+                        <li>Zoober</li>
+                        <li>Joober Koober Boober</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- <div id="changelog">Changelog</div> -->
+        </div>
+    </body>
+</html>

@@ -1,0 +1,378 @@
+:root {
+    --titlebar-height: 80px; /* Define the height of the titlebar */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'lexend';
+    src: url('../assets/fonts/Lexend-Regular.ttf');
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    font-family: 'lexend';
+}
+
+main {
+    margin-top: var(--titlebar-height);
+    height: calc(100% - var(--titlebar-height));
+    width: 80%;
+}
+
+input {
+    border: 2px solid gray;
+    border-radius: 10px;
+}
+
+input:focus {
+    outline: none !important;
+    border-color: red;
+    box-shadow: 0 0 0 2px red;
+}
+
+#header {
+    display: grid;
+    grid-template-columns: 10% 45% 25% 20%;
+    align-items: center;
+    width: 100%;
+    height: calc(var(--titlebar-height)*(0.6));
+    overflow: hidden;
+}
+
+#header div {
+    text-align: center;
+    border: 1px solid black;
+    border-right-style: none;
+    padding: 8px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: large;
+}
+
+#header #money {
+    justify-content: left;
+}
+
+#header #back {
+    cursor: pointer;
+    user-select: none;
+}
+
+#header #viewstats {
+    cursor: pointer;
+    user-select: none;
+}
+
+#titlebar {
+    display: block;
+    position: fixed;
+    height: var(--titlebar-height);
+    top: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+#titlebar #drag-region {
+    width: 100%;
+    position: relative;
+    background: gray;
+    height: calc(var(--titlebar-height)*(0.4));
+    -webkit-app-region: drag;
+    display: flex;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 100%;
+    font-weight: bold;
+    padding: 4px 4px 4px 8px;
+}
+
+#dcsconnect {
+    display: grid;
+    grid-template-columns: repeat(2, 3em);
+    grid-template-rows: 100%;
+    margin-left: auto;
+    height: 100%;
+    -webkit-app-region: no-drag;
+    /* overflow: hidden; */
+}
+
+#dcsconnect > div {
+    grid-row: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    user-select: none;
+}
+
+#dcsconnect > div:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+#dcsconnect > div:active {
+    background: rgba(255,255,255,0.2);
+}
+
+#dcsconnect img {
+    height: 70%;
+}
+
+#dcsconnect .connecting img {
+    filter: invert(30%) sepia(50%) saturate(5000%) hue-rotate(200deg);
+}
+
+#dcsconnect .partconnected img {
+    filter: invert(100%) sepia(100%) saturate(7000%) hue-rotate(330deg);
+}
+
+#dcsconnect .connected img {
+    filter: invert(40%) sepia(70%) saturate(1000%) hue-rotate(65deg);
+}
+
+.dropdownbutton {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: calc(var(--titlebar-height)*(0.4));
+    right: 0;
+    z-index: 1;
+    background-color: lightgray;
+    min-width: 4em;
+    border: 1px solid black;
+}
+
+.dropdown .timeout {
+    display: none;
+}
+
+.connecting .dropdown .timeout {
+    display: block;
+}
+
+.connecting .dropdown .retry {
+    display: none;
+}
+
+.dropdown .username, .dropdown .loginprofile {
+    display: none;
+}
+
+.partconnected .dropdown .loginprofile, .connected .dropdown .loginprofile {
+    display: block;
+}
+
+.connected .dropdown .username {
+    display: block;
+}
+
+.dropdown .profile {
+    display: none;
+}
+
+.connected .dropdown .profile {
+    display: block;
+}
+
+.dropdown * {
+    padding: 5px;
+    text-align: center;
+}
+
+.dropdown a {
+    display: block;
+    text-decoration: none;
+}
+
+.dropdown input {
+    border: none;
+    padding: 5px;
+    width: 8em;
+}
+
+.dropdown a:hover {
+    background-color: #888;
+}
+
+.dropdownbutton:hover .dropdown {
+    display: block;
+}
+
+#window-controls {
+    display: grid;
+    grid-template-columns: repeat(3, 3em);
+    height: 100%;
+    -webkit-app-region: no-drag;
+    overflow: hidden;
+}
+
+#window-controls .button {
+    grid-row: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    user-select: none;
+}
+#window-controls .button img {
+    height: 50%;
+}
+
+#window-controls .button:hover {
+    background: rgba(255,255,255,0.1);
+}
+#window-controls .button:active {
+    background: rgba(255,255,255,0.2);
+}
+#minimize {
+    grid-column: 1;
+}
+#maximize, #restore {
+    grid-column: 2;
+}
+#close {
+    grid-column: 3;
+}
+
+#close:hover {
+    background: red !important;
+}
+#close:active {
+    background: coral !important;
+}
+#close:active .icon {
+    filter: invert(1);
+}
+
+#window-controls .hide {
+    display: none !important;
+}
+
+#page {
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+#infodata {
+    position: fixed;
+    top: var(--titlebar-height);
+    right: 0;
+    width: 20%;
+    height: calc(100% - var(--titlebar-height));
+    border: 1px solid black;
+    border-top-style: none;
+    margin: 0;
+    padding: 0;
+    /* z-index: -1; */
+}
+
+#news {
+    height: 50%;
+    padding: 5px;
+    overflow: scroll;
+    border-bottom: 1px solid black;
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 5px;
+    overflow-x: hidden;
+}
+
+#news::-webkit-scrollbar {
+    width: 5px;
+}
+
+#news::-webkit-scrollbar-track {
+    display: none;
+}
+
+#news::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+#news::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+#news div {
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid black;
+    text-align: center;
+}
+
+#leaderboard {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    padding: 5px;
+}
+
+#leaderboardheader {
+    text-align: center;
+    margin-bottom: 5px;
+    /* height: 20%; */
+}
+
+#leaderboardheader h3 {
+    font-size: large;
+    font-weight: bold;
+    margin: 0;
+}
+
+#leaderboardheader p {
+    display: inline-block;
+    padding-right: 5px;
+    margin: 0;
+}
+
+#leaderboardheader div {
+    margin: 0;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 2px 5px;
+}
+
+#leaderboarddata {
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#leaderboarddata ol {
+    list-style-position: inside;
+    display: grid;
+    grid-template-columns: 100%;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#leaderboarddata li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
